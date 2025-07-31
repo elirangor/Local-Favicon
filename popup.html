@@ -1,64 +1,516 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Custom Local Favicon</title>
-  <link rel="stylesheet" href="popup.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Custom Local Favicon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+        /* Base Styling */
+        :root {
+            --bg-color-light: #f8f9fa;
+            --bg-color-container: #ffffff;
+            --text-color-primary: #333;
+            --border-color: #e9ecef;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --button-primary-bg: #007bff;
+            --button-primary-hover-bg: #0056b3;
+            --button-secondary-bg: #6c757d;
+            --button-secondary-hover-bg: #5a6268;
+            --button-danger-bg: #dc3545;
+            --button-danger-hover-bg: #c82333;
+            --success-bg: #d4edda;
+            --success-text: #155724;
+            --error-bg: #f8d7da;
+            --error-text: #721c24;
+            --list-item-bg: #f1f1f1;
+            --link-color: #007bff;
+            --muted-text-color: #6c757d;
+            --header-border: #dee2e6;
+            --title-icon-color: #ffc107; /* Gold color for the star */
+        }
+
+        /* Dark Mode Variables */
+        .dark-mode {
+            --bg-color-light: #121212;
+            --bg-color-container: #1e1e1e;
+            --text-color-primary: #e0e0e0;
+            --border-color: #333;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --button-primary-bg: #4a90e2;
+            --button-primary-hover-bg: #357bd8;
+            --button-secondary-bg: #777;
+            --button-secondary-hover-bg: #666;
+            --button-danger-bg: #e74c3c;
+            --button-danger-hover-bg: #c0392b;
+            --success-bg: #28a745;
+            --success-text: #fff;
+            --error-bg: #dc3545;
+            --error-text: #fff;
+            --list-item-bg: #2a2a2a;
+            --link-color: #9bd0ff;
+            --muted-text-color: #a0a0a0;
+            --header-border: #444;
+            --title-icon-color: #ffd700; /* Brighter gold for dark mode */
+        }
+
+        /* General Body and Container */
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-width: 350px; /* Slightly wider for better spacing */
+            max-width: 400px;
+            font-size: 14px;
+            background-color: var(--bg-color-light);
+            color: var(--text-color-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            padding: 20px;
+            margin: 12px;
+            border-radius: 10px;
+            background-color: var(--bg-color-container);
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px; /* Increased margin */
+            border-bottom: 1px solid var(--header-border);
+            padding-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .title-icon {
+            margin-left: 8px;
+            color: var(--title-icon-color);
+            font-size: 0.9em;
+            vertical-align: middle;
+        }
+
+        h3 {
+            font-size: 1em; /* Slightly larger for better hierarchy */
+            margin-top: 0px; /* Reduced margin to make the space smaller */
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--text-color-primary);
+        }
+
+        /* Form Inputs */
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px; /* Increased padding */
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin-bottom: 16px; /* Increased margin */
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color-container);
+            color: var(--text-color-primary);
+            transition: border-color 0.3s ease, box-shadow 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--button-primary-bg);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+        }
+
+        input[type="text"]::placeholder {
+            color: var(--muted-text-color);
+            opacity: 0.7;
+        }
+
+        /* Modern file upload styling */
+        .custom-file-upload {
+            display: inline-block;
+            background-color: var(--button-secondary-bg);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 12px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        .custom-file-upload:hover {
+            background-color: var(--button-secondary-hover-bg);
+        }
+        .custom-file-upload input[type="file"] {
+            display: none;
+        }
+        #fileNameDisplay {
+            font-size: 0.9em;
+            color: var(--text-color-primary);
+            font-style: italic;
+        }
+
+        /* Buttons */
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+            color: white;
+        }
+
+        .primary-button {
+            background-color: var(--button-primary-bg);
+            width: 100%;
+            margin-top: 16px;
+        }
+        .primary-button:hover {
+            background-color: var(--button-primary-hover-bg);
+            transform: translateY(-1px);
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            font-size: 1.4em; /* Slightly larger icon */
+            cursor: pointer;
+            color: var(--text-color-primary);
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .icon-button:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        .dark-mode .icon-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Message Box */
+        .message {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: 500;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .message.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .message.success {
+            background-color: var(--success-bg);
+            color: var(--success-text);
+        }
+        .message.error {
+            background-color: var(--error-bg);
+            color: var(--error-text);
+        }
+
+        /* Favicon List */
+        #faviconList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #faviconList li {
+            background-color: var(--list-item-bg);
+            margin-bottom: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease;
+        }
+
+        .favicon-entry-info {
+            margin-bottom: 8px;
+        }
+
+        .favicon-entry-info .site-link {
+            font-weight: 600;
+            color: var(--link-color);
+            text-decoration: underline;
+            display: block;
+            margin-bottom: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .favicon-entry-info .favicon-link {
+            color: var(--muted-text-color);
+            text-decoration: none; /* De-emphasized */
+            word-break: break-word;
+            font-size: 0.85em;
+            transition: color 0.2s ease, text-decoration 0.2s ease;
+        }
+        .favicon-entry-info .favicon-link:hover {
+            text-decoration: underline;
+            color: var(--link-color);
+        }
+
+        /* Buttons below the info */
+        .favicon-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .favicon-actions button {
+            padding: 6px 12px;
+            font-size: 0.85em;
+        }
+
+        .copy-button {
+            background-color: var(--button-secondary-bg);
+        }
+        .copy-button:hover {
+            background-color: var(--button-secondary-hover-bg);
+            transform: translateY(-1px);
+        }
+
+        .delete-button {
+            background-color: var(--button-danger-bg);
+        }
+        .delete-button:hover {
+            background-color: var(--button-danger-hover-bg);
+            transform: translateY(-1px);
+        }
+
+        /* Toggle Switch for Favicon Source */
+        .toggle-group {
+            margin-bottom: 16px;
+        }
+
+        .source-toggle {
+            display: flex;
+            background-color: var(--list-item-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .source-toggle input[type="radio"] {
+            display: none;
+        }
+
+        .source-toggle .toggle-button {
+            flex: 1;
+            text-align: center;
+            padding: 10px 12px;
+            cursor: pointer;
+            background-color: transparent;
+            color: var(--text-color-primary);
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
+            font-weight: 500;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .source-toggle .toggle-button:last-child {
+            border-right: none;
+        }
+        
+        .source-toggle .toggle-button:hover:not(.source-toggle input[type="radio"]:checked + .toggle-button) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        .dark-mode .source-toggle .toggle-button:hover:not(.source-toggle input[type="radio"]:checked + .toggle-button) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .source-toggle input[type="radio"]:checked + .toggle-button {
+            background-color: var(--button-primary-bg);
+            color: white;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+
+        /* Credit Section */
+        .credit {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--muted-text-color);
+            opacity: 0.7;
+        }
+        .credit a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .credit a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h2>Custom Favicon <span class="title-icon"><i class="fas fa-star"></i></span></h2>
-      <button id="darkModeToggle" class="icon-button" title="Toggle Night Mode">
-        <i class="fas fa-moon"></i>
-      </button>
-    </header>
+    <div class="container">
+        <header>
+            <h2>Custom Favicon <span class="title-icon"><i class="fas fa-star"></i></span></h2>
+            <button id="darkModeToggle" class="icon-button" title="Toggle Night Mode" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
 
-    <section class="input-section">
-      <label for="urlInput"><strong>Website URL:</strong></label>
-      <input type="text" id="urlInput" placeholder="https://example.com">
+        <section class="input-section">
+            <label for="urlInput">Website URL:</label>
+            <input type="text" id="urlInput" placeholder="https://example.com">
 
-      <div class="form-group toggle-group">
-        <label><strong>Choose Favicon Source:</strong></label><br>
-        <div class="source-toggle">
-          <input type="radio" id="sourceUrl" name="source" value="url" checked>
-          <label for="sourceUrl" class="toggle-button">Favicon URL</label>
+            <div class="form-group toggle-group">
+                <label>Choose Favicon Source:</label>
+                <div class="source-toggle">
+                    <input type="radio" id="sourceUrl" name="source" value="url" checked>
+                    <label for="sourceUrl" class="toggle-button">Favicon URL</label>
 
-          <input type="radio" id="sourceUpload" name="source" value="upload">
-          <label for="sourceUpload" class="toggle-button">Upload Image</label>
+                    <input type="radio" id="sourceUpload" name="source" value="upload">
+                    <label for="sourceUpload" class="toggle-button">Upload Image</label>
+                </div>
+            </div>
+
+            <label for="iconUrlInput" id="iconUrlLabel">Favicon URL:</label>
+            <input type="text" id="iconUrlInput" placeholder="e.g., https://example.com/icon.png">
+
+            <div id="uploadSection" style="display: none;">
+                <label for="fileInput">Upload Favicon:</label><br>
+                <label class="custom-file-upload">
+                    <input type="file" id="fileInput" accept="image/*" />
+                    Choose File
+                </label>
+                <span id="fileNameDisplay"></span>
+            </div>
+
+            <button id="setFaviconButton" class="primary-button">Set Favicon</button>
+            <div id="message" class="message"></div>
+        </section>
+
+        <section class="current-favicons-section">
+            <h3>Current Custom Favicons</h3>
+            <ul id="faviconList">
+                <li id="noFaviconsMessage">No custom favicons set yet.</li>
+            </ul>
+        </section>
+
+        <div class="credit">
+            Just a little something from
+            <a href="https://www.linkedin.com/in/elirang/" target="_blank">Eliran</a> |
+            <a href="https://github.com/elirangor/Local-Favicon" target="_blank">View on GitHub</a>
         </div>
-      </div>
-
-      <label for="iconUrlInput">Favicon URL:</label>
-      <input type="text" id="iconUrlInput" placeholder="e.g., https://example.com/icon.png">
-
-      <div id="uploadSection" style="display: none;">
-        <label for="fileInput">Upload Favicon:</label><br>
-        <label class="custom-file-upload">
-          <input type="file" id="fileInput" accept="image/*" />
-          Choose File
-        </label>
-        <span id="fileNameDisplay"></span>
-      </div>
-
-      <button id="setFaviconButton" class="primary-button">Set Favicon</button>
-      <div id="message" class="message"></div>
-    </section>
-
-    <section class="current-favicons-section">
-      <h3>Current Custom Favicons</h3>
-      <ul id="faviconList">
-        <li id="noFaviconsMessage">No custom favicons set yet.</li>
-      </ul>
-    </section>
-
-    <div class="credit">
-      Just a little something from
-      <a href="https://www.linkedin.com/in/elirang/" target="_blank">Eliran</a> |
-      <a href="https://github.com/elirangor/Local-Favicon" target="_blank">View on GitHub</a>
     </div>
-  </div>
 
-  <script src="popup.js"></script>
+    <script src="popup.js"></script>
 </body>
 </html>
+
+<!-- popup.js (Simulated functionality) -->
+<script>
+    // This is a placeholder to demonstrate the new UI.
+    // Your actual extension logic should be implemented here.
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const urlRadio = document.getElementById('sourceUrl');
+        const uploadRadio = document.getElementById('sourceUpload');
+        const uploadSection = document.getElementById('uploadSection');
+        const iconUrlInput = document.getElementById('iconUrlInput');
+        const iconUrlLabel = document.getElementById('iconUrlLabel');
+        const fileInput = document.getElementById('fileInput');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+        const setFaviconButton = document.getElementById('setFaviconButton');
+        const messageDiv = document.getElementById('message');
+        const faviconList = document.getElementById('faviconList');
+        const noFaviconsMessage = document.getElementById('noFaviconsMessage');
+        const body = document.body;
+
+        // Initialize theme based on system preference
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDarkMode) {
+            body.classList.add('dark-mode');
+        }
+
+        // Dark Mode Toggle - now acts as an override
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+
+        // Toggle between URL and Upload sections
+        urlRadio.addEventListener('change', () => {
+            if (urlRadio.checked) {
+                uploadSection.style.display = 'none';
+                iconUrlInput.style.display = 'block';
+                iconUrlLabel.style.display = 'block';
+            }
+        });
+
+        uploadRadio.addEventListener('change', () => {
+            if (uploadRadio.checked) {
+                uploadSection.style.display = 'block';
+                iconUrlInput.style.display = 'none';
+                iconUrlLabel.style.display = 'none';
+            }
+        });
+
+        // Display file name on upload
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = fileInput.files[0].name;
+            } else {
+                fileNameDisplay.textContent = '';
+            }
+        });
+
+        // Show a sample message on button click
+        setFaviconButton.addEventListener('click', () => {
+            // Simulate a success message
+            showMessage('Favicon set successfully!', 'success');
+
+            // Add a sample list item to demonstrate the new styling
+            addSampleListItem();
+        });
+
+        // Function to show message
+        function showMessage(text, type) {
+            messageDiv.textContent = text;
+            messageDiv.className = `message show ${type}`;
+            setTimeout(() => {
+                messageDiv.classList.remove('show');
+            }, 3000);
+        }
+
+        // Function to add a sample list item
+        function addSampleListItem() {
+            if (noFaviconsMessage) {
+                noFaviconsMessage.remove();
+            }
+
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div class="favicon-entry-info">
+                    <a href="https://example.com" class="site-link" target="_blank">https://example.com</a>
+                    <a href="https://example.com/icon.png" class="favicon-link" target="_blank">https://example.com/icon.png</a>
+                </div>
+                <div class="favicon-actions">
+                    <button class="copy-button">Copy</button>
+                    <button class="delete-button">Delete</button>
+                </div>
+            `;
+            faviconList.appendChild(li);
+        }
+
+    });
+</script>
