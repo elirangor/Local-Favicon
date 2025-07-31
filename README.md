@@ -1,4 +1,4 @@
-# Custom Favicon Changer – Chrome Extension  
+# Custom Favicon Changer - Chrome Extension  
 📦 A browser extension to personalize websites by changing their favicons.
 
 ## ✅ Features  
