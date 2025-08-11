@@ -9,48 +9,48 @@
         :root {
             --bg-color-light: #f8f9fa;
             --bg-color-container: #ffffff;
-            --text-color-primary: #333;
-            --border-color: #e9ecef;
-            --shadow-color: rgba(0, 0, 0, 0.08);
-            --button-primary-bg: #007bff;
-            --button-primary-hover-bg: #0056b3;
-            --button-secondary-bg: #6c757d;
-            --button-secondary-hover-bg: #5a6268;
-            --button-danger-bg: #dc3545;
-            --button-danger-hover-bg: #c82333;
-            --success-bg: #d4edda;
-            --success-text: #155724;
-            --error-bg: #f8d7da;
-            --error-text: #721c24;
-            --list-item-bg: #f1f1f1;
-            --link-color: #007bff;
-            --muted-text-color: #6c757d;
-            --header-border: #dee2e6;
-            --title-icon-color: #ffc107; /* Gold color for the star */
+            --text-color-primary: #2d3748;
+            --border-color: #e2e8f0;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --button-primary-bg: #3182ce;
+            --button-primary-hover-bg: #2c5282;
+            --button-secondary-bg: #718096;
+            --button-secondary-hover-bg: #4a5568;
+            --button-danger-bg: #e53e3e;
+            --button-danger-hover-bg: #c53030;
+            --success-bg: #c6f6d5;
+            --success-text: #22543d;
+            --error-bg: #fed7d7;
+            --error-text: #742a2a;
+            --list-item-bg: #f7fafc;
+            --link-color: #3182ce;
+            --muted-text-color: #718096;
+            --header-border: #e2e8f0;
+            --title-icon-color: #fbbf24;
         }
 
-        /* Dark Mode Variables */
+        /* Dark Mode Variables - Blue Theme */
         .dark-mode {
-            --bg-color-light: #121212;
-            --bg-color-container: #1e1e1e;
-            --text-color-primary: #e0e0e0;
-            --border-color: #333;
-            --shadow-color: rgba(0, 0, 0, 0.4);
-            --button-primary-bg: #4a90e2;
-            --button-primary-hover-bg: #357bd8;
-            --button-secondary-bg: #777;
-            --button-secondary-hover-bg: #666;
-            --button-danger-bg: #e74c3c;
-            --button-danger-hover-bg: #c0392b;
-            --success-bg: #28a745;
-            --success-text: #fff;
-            --error-bg: #dc3545;
-            --error-text: #fff;
-            --list-item-bg: #2a2a2a;
-            --link-color: #9bd0ff;
-            --muted-text-color: #a0a0a0;
-            --header-border: #444;
-            --title-icon-color: #ffd700; /* Brighter gold for dark mode */
+            --bg-color-light: #0f172a;
+            --bg-color-container: #1e293b;
+            --text-color-primary: #f1f5f9;
+            --border-color: #334155;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --button-primary-bg: #3b82f6;
+            --button-primary-hover-bg: #2563eb;
+            --button-secondary-bg: #64748b;
+            --button-secondary-hover-bg: #475569;
+            --button-danger-bg: #ef4444;
+            --button-danger-hover-bg: #dc2626;
+            --success-bg: #1e40af;
+            --success-text: #dbeafe;
+            --error-bg: #dc2626;
+            --error-text: #fecaca;
+            --list-item-bg: #334155;
+            --link-color: #60a5fa;
+            --muted-text-color: #94a3b8;
+            --header-border: #334155;
+            --title-icon-color: #fbbf24;
         }
 
         /* General Body and Container */
@@ -58,7 +58,7 @@
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            min-width: 350px; /* Slightly wider for better spacing */
+            min-width: 360px;
             max-width: 400px;
             font-size: 14px;
             background-color: var(--bg-color-light);
@@ -67,11 +67,11 @@
         }
 
         .container {
-            padding: 20px;
-            margin: 12px;
-            border-radius: 10px;
+            padding: 18px;
+            margin: 8px;
+            border-radius: 12px;
             background-color: var(--bg-color-container);
-            box-shadow: 0 4px 12px var(--shadow-color);
+            box-shadow: 0 4px 20px var(--shadow-color);
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -79,13 +79,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px; /* Increased margin */
+            margin-bottom: 16px;
             border-bottom: 1px solid var(--header-border);
             padding-bottom: 12px;
         }
 
         h2 {
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin: 0;
             display: flex;
             align-items: center;
@@ -95,13 +95,13 @@
         .title-icon {
             margin-left: 8px;
             color: var(--title-icon-color);
-            font-size: 0.9em;
+            font-size: 0.85em;
             vertical-align: middle;
         }
 
         h3 {
-            font-size: 1em; /* Slightly larger for better hierarchy */
-            margin-top: 0px; /* Reduced margin to make the space smaller */
+            font-size: 1em;
+            margin-top: 4px; /* Much tighter spacing */
             margin-bottom: 12px;
             font-weight: 600;
             color: var(--text-color-primary);
@@ -112,29 +112,31 @@
             display: block;
             margin-bottom: 6px;
             font-weight: 500;
+            font-size: 0.9em;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 10px; /* Increased padding */
-            border-radius: 6px;
+            padding: 12px;
+            border-radius: 8px;
             box-sizing: border-box;
-            margin-bottom: 16px; /* Increased margin */
+            margin-bottom: 16px;
             border: 1px solid var(--border-color);
             background-color: var(--bg-color-container);
             color: var(--text-color-primary);
             transition: border-color 0.3s ease, box-shadow 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+            font-size: 14px;
         }
 
         input[type="text"]:focus {
             outline: none;
             border-color: var(--button-primary-bg);
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
         }
 
         input[type="text"]::placeholder {
             color: var(--muted-text-color);
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         /* Modern file upload styling */
@@ -142,50 +144,61 @@
             display: inline-block;
             background-color: var(--button-secondary-bg);
             color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 10px 18px;
+            border-radius: 8px;
             cursor: pointer;
             margin-right: 12px;
             font-weight: 500;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            font-size: 14px;
         }
         .custom-file-upload:hover {
             background-color: var(--button-secondary-hover-bg);
+            transform: translateY(-1px);
         }
         .custom-file-upload input[type="file"] {
             display: none;
         }
         #fileNameDisplay {
-            font-size: 0.9em;
-            color: var(--text-color-primary);
+            font-size: 0.85em;
+            color: var(--muted-text-color);
             font-style: italic;
         }
 
         /* Buttons */
         button {
-            padding: 10px 18px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 500;
             transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
             color: white;
+            font-size: 14px;
         }
 
         .primary-button {
             background-color: var(--button-primary-bg);
             width: 100%;
             margin-top: 16px;
+            margin-bottom: 4px; /* Much smaller margin */
+            font-size: 15px;
+            font-weight: 600;
         }
         .primary-button:hover {
             background-color: var(--button-primary-hover-bg);
             transform: translateY(-1px);
         }
+        .primary-button:disabled {
+            opacity: 0.6;
+            transform: none;
+            cursor: not-allowed;
+        }
 
         .icon-button {
             background: none;
             border: none;
-            font-size: 1.4em; /* Slightly larger icon */
+            font-size: 1.3em;
             cursor: pointer;
             color: var(--text-color-primary);
             padding: 8px;
@@ -203,7 +216,7 @@
         .message {
             margin-top: 16px;
             padding: 12px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 0.9em;
             font-weight: 500;
             opacity: 0;
@@ -232,36 +245,37 @@
         #faviconList li {
             background-color: var(--list-item-bg);
             margin-bottom: 12px;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 14px;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             transition: background-color 0.3s ease;
+            border: 1px solid var(--border-color);
         }
 
         .favicon-entry-info {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .favicon-entry-info .site-link {
             font-weight: 600;
             color: var(--link-color);
-            text-decoration: underline;
+            text-decoration: none;
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             transition: color 0.2s ease;
+            font-size: 0.95em;
+        }
+        .favicon-entry-info .site-link:hover {
+            text-decoration: underline;
         }
 
         .favicon-entry-info .favicon-link {
             color: var(--muted-text-color);
-            text-decoration: none; /* De-emphasized */
+            text-decoration: none;
             word-break: break-word;
-            font-size: 0.85em;
+            font-size: 0.8em;
             transition: color 0.2s ease, text-decoration 0.2s ease;
-        }
-        .favicon-entry-info .favicon-link:hover {
-            text-decoration: underline;
-            color: var(--link-color);
         }
 
         /* Buttons below the info */
@@ -269,12 +283,13 @@
             display: flex;
             justify-content: flex-end;
             gap: 10px;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         
         .favicon-actions button {
-            padding: 6px 12px;
+            padding: 8px 16px;
             font-size: 0.85em;
+            border-radius: 6px;
         }
 
         .copy-button {
@@ -301,7 +316,7 @@
         .source-toggle {
             display: flex;
             background-color: var(--list-item-bg);
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
             border: 1px solid var(--border-color);
         }
@@ -313,13 +328,14 @@
         .source-toggle .toggle-button {
             flex: 1;
             text-align: center;
-            padding: 10px 12px;
+            padding: 12px 16px;
             cursor: pointer;
             background-color: transparent;
             color: var(--text-color-primary);
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
             font-weight: 500;
             border-right: 1px solid var(--border-color);
+            font-size: 14px;
         }
 
         .source-toggle .toggle-button:last-child {
@@ -327,26 +343,31 @@
         }
         
         .source-toggle .toggle-button:hover:not(.source-toggle input[type="radio"]:checked + .toggle-button) {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-        .dark-mode .source-toggle .toggle-button:hover:not(.source-toggle input[type="radio"]:checked + .toggle-button) {
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: rgba(59, 130, 246, 0.1);
         }
 
         .source-toggle input[type="radio"]:checked + .toggle-button {
             background-color: var(--button-primary-bg);
             color: white;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
         }
 
+        /* Spacing adjustments - Much tighter */
+        .input-section {
+            margin-bottom: 0;
+        }
+
+        .current-favicons-section {
+            margin-top: -4px; /* Negative margin for even tighter spacing */
+        }
 
         /* Credit Section */
         .credit {
-            margin-top: 24px;
+            margin-top: 20px;
             text-align: center;
-            font-size: 0.8em;
+            font-size: 0.75em;
             color: var(--muted-text-color);
-            opacity: 0.7;
+            opacity: 0.8;
         }
         .credit a {
             color: var(--link-color);
@@ -357,6 +378,22 @@
             text-decoration: underline;
         }
 
+        /* No favicons message */
+        #noFaviconsMessage {
+            color: var(--muted-text-color);
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        /* ---- Margin & spacing fixes (keep CSS, just override here) ---- */
+        .input-section { margin-bottom: 12px !important; }
+        .current-favicons-section { margin-top: 12px !important; }
+        h3 { margin-top: 8px !important; margin-bottom: 10px !important; }
+        #faviconList li { margin-bottom: 10px !important; }
+        /* neutralize any accidental inline negative margins */
+        *[style*="margin-top:-"] { margin-top: 0 !important; }
     </style>
 </head>
 <body>
@@ -416,101 +453,3 @@
     <script src="popup.js"></script>
 </body>
 </html>
-
-<!-- popup.js (Simulated functionality) -->
-<script>
-    // This is a placeholder to demonstrate the new UI.
-    // Your actual extension logic should be implemented here.
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const urlRadio = document.getElementById('sourceUrl');
-        const uploadRadio = document.getElementById('sourceUpload');
-        const uploadSection = document.getElementById('uploadSection');
-        const iconUrlInput = document.getElementById('iconUrlInput');
-        const iconUrlLabel = document.getElementById('iconUrlLabel');
-        const fileInput = document.getElementById('fileInput');
-        const fileNameDisplay = document.getElementById('fileNameDisplay');
-        const setFaviconButton = document.getElementById('setFaviconButton');
-        const messageDiv = document.getElementById('message');
-        const faviconList = document.getElementById('faviconList');
-        const noFaviconsMessage = document.getElementById('noFaviconsMessage');
-        const body = document.body;
-
-        // Initialize theme based on system preference
-        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (prefersDarkMode) {
-            body.classList.add('dark-mode');
-        }
-
-        // Dark Mode Toggle - now acts as an override
-        darkModeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-        });
-
-        // Toggle between URL and Upload sections
-        urlRadio.addEventListener('change', () => {
-            if (urlRadio.checked) {
-                uploadSection.style.display = 'none';
-                iconUrlInput.style.display = 'block';
-                iconUrlLabel.style.display = 'block';
-            }
-        });
-
-        uploadRadio.addEventListener('change', () => {
-            if (uploadRadio.checked) {
-                uploadSection.style.display = 'block';
-                iconUrlInput.style.display = 'none';
-                iconUrlLabel.style.display = 'none';
-            }
-        });
-
-        // Display file name on upload
-        fileInput.addEventListener('change', () => {
-            if (fileInput.files.length > 0) {
-                fileNameDisplay.textContent = fileInput.files[0].name;
-            } else {
-                fileNameDisplay.textContent = '';
-            }
-        });
-
-        // Show a sample message on button click
-        setFaviconButton.addEventListener('click', () => {
-            // Simulate a success message
-            showMessage('Favicon set successfully!', 'success');
-
-            // Add a sample list item to demonstrate the new styling
-            addSampleListItem();
-        });
-
-        // Function to show message
-        function showMessage(text, type) {
-            messageDiv.textContent = text;
-            messageDiv.className = `message show ${type}`;
-            setTimeout(() => {
-                messageDiv.classList.remove('show');
-            }, 3000);
-        }
-
-        // Function to add a sample list item
-        function addSampleListItem() {
-            if (noFaviconsMessage) {
-                noFaviconsMessage.remove();
-            }
-
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <div class="favicon-entry-info">
-                    <a href="https://example.com" class="site-link" target="_blank">https://example.com</a>
-                    <a href="https://example.com/icon.png" class="favicon-link" target="_blank">https://example.com/icon.png</a>
-                </div>
-                <div class="favicon-actions">
-                    <button class="copy-button">Copy</button>
-                    <button class="delete-button">Delete</button>
-                </div>
-            `;
-            faviconList.appendChild(li);
-        }
-
-    });
-</script>

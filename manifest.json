@@ -1,15 +1,16 @@
 {
   "manifest_version": 3,
   "name": "Custom Favicon Changer",
-  "version": "1.2",
-  "description": "Customize website favicons with a URL or a locally uploaded image, now with a sleek UI and night mode!",
+  "version": "1.2.2",
+  "description": "Customize website favicons with a URL or a locally uploaded image",
   "permissions": [
     "activeTab",
     "scripting",
     "storage"
   ],
   "host_permissions": [
-    "<all_urls>"
+    "http://*/*",
+    "https://*/*"
   ],
   "action": {
     "default_popup": "popup.html",
